@@ -5,7 +5,11 @@ services:
 
 script:
     - ./test-build.sh $NODE_VERSION
-
+after_success:
+    - if [ "$TRAVIS_BRANCH" == "master" ]; then
+      docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
+      docker push phearzero/node-osrm;
+      fi
 env:
     matrix :
         - NODE_VERSION: '4.8'

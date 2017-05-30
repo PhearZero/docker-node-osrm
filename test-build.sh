@@ -33,7 +33,7 @@ for version in "${versions[@]}"; do
     [ -f "$version/$variant/Dockerfile" ] || continue
     tag=$(cat $version/$variant/Dockerfile | grep "ENV NODE_VERSION" | cut -d' ' -f3)
     info "Building $tag-$variant variant..."
-    docker build -t node-osrm:$tag-$variant $version/$variant
+    docker build -t phearzero/node-osrm:$tag-$variant $version/$variant
 
     if [[ $? -gt 0 ]]; then
       fatal "Build of $tag-$variant failed!"
