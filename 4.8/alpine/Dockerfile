@@ -1,4 +1,4 @@
-FROM alpine:3.4
+FROM osrm/osrm-backend
 
 ENV NPM_CONFIG_LOGLEVEL info
 ENV NODE_VERSION 4.8.3
@@ -46,7 +46,7 @@ RUN addgroup -g 1000 node \
     && rm -Rf "node-v$NODE_VERSION" \
     && rm "node-v$NODE_VERSION.tar.xz" SHASUMS256.txt.asc SHASUMS256.txt
 
-ENV YARN_VERSION 0.24.4
+ENV YARN_VERSION 0.24.6
 
 RUN apk add --no-cache --virtual .build-deps-yarn curl gnupg tar \
   && for key in \

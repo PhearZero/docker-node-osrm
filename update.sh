@@ -30,10 +30,10 @@ for version in "${versions[@]}"; do
 	# Skip "docs" and other non-docker directories
 	[ -f "$version/Dockerfile" ] || continue
 
-	template="Dockerfile.template"
-	dockerfile="$version/Dockerfile"
-
-	update_node_version
+#	template="Dockerfile.template"
+#	dockerfile="$version/Dockerfile"
+#
+#	update_node_version
 
 	variants=$(echo $version/*/ | xargs -n1 basename)
 

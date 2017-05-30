@@ -1,11 +1,11 @@
-# Node.js
+# Node.js + OSRM
 
-[![dockeri.co](http://dockeri.co/image/_/node)](https://registry.hub.docker.com/_/node/)
+[![dockeri.co](http://dockeri.co/image/_/phearzero)](https://registry.hub.docker.com/_/phearzero/)
 
-[![GitHub issues](https://img.shields.io/github/issues/nodejs/docker-node.svg "GitHub issues")](https://github.com/nodejs/docker-node)
-[![GitHub stars](https://img.shields.io/github/stars/nodejs/docker-node.svg "GitHub stars")](https://github.com/nodejs/docker-node)
+[![GitHub issues](https://img.shields.io/github/issues/phearzero/docker-node-osrm.svg "GitHub issues")](https://github.com/phearzero/docker-node-osrm)
+[![GitHub stars](https://img.shields.io/github/stars/phearzero/docker-node-osrm.svg "GitHub stars")](https://github.com/phearzero/docker-node-osrm)
 
-The official Node.js docker image, made with love by the node community.
+Fork of The official Node.js docker image, made with love by the node community.
 
 ## Table of Contents
 
@@ -46,7 +46,7 @@ See: http://nodejs.org
 ## Create a `Dockerfile` in your Node.js app project
 
 ```dockerfile
-FROM node:4-onbuild
+FROM phearzero/node-osrm
 # replace this with your application's default port
 EXPOSE 8888
 ```

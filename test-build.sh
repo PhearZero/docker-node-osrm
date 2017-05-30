@@ -25,35 +25,15 @@ fi
 versions=( "${versions[@]%/}" )
 
 for version in "${versions[@]}"; do
-  # Skip "docs" and other non-docker directories
-  [ -f "$version/Dockerfile" ] || continue
-
-  tag=$(cat $version/Dockerfile | grep "ENV NODE_VERSION" | cut -d' ' -f3)
-
-  info "Building $tag..."
-  docker build -t node:$tag $version
-
-  if [[ $? -gt 0 ]]; then
-    fatal "Build of $tag failed!"
-  else
-    info "Build of $tag succeeded."
-  fi
-
-  OUTPUT=$(docker run --rm -it node:$tag node -e "process.stdout.write(process.versions.node)")
-  if [ "$OUTPUT" != "$tag" ]; then
-    fatal "Test of $tag failed!"
-  else
-    info "Test of $tag succeeded."
-  fi
 
   variants=$(echo $version/*/ | xargs -n1 basename)
 
   for variant in $variants; do
     # Skip non-docker directories
     [ -f "$version/$variant/Dockerfile" ] || continue
-    
+    tag=$(cat $version/$variant/Dockerfile | grep "ENV NODE_VERSION" | cut -d' ' -f3)
     info "Building $tag-$variant variant..."
-    docker build -t node:$tag-$variant $version/$variant
+    docker build -t node-osrm:$tag-$variant $version/$variant
 
     if [[ $? -gt 0 ]]; then
       fatal "Build of $tag-$variant failed!"
